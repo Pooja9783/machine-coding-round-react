@@ -1,19 +1,23 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import "./styles.css";
 
 export default function SearchFunctionality() {
-  const dishes = [
-    "Spaghetti Bolognese",
-    "Chicken Tikka Masala",
-    "Grilled Salmon",
-    "Vegetable Stir-Fry",
-    "Beef Tacos",
-    "Margherita Pizza",
-    "Pad Thai",
-    "Cheeseburger",
-    "Lasagna",
-    "Caesar Salad",
-  ];
+  // Use useMemo to memoize the dishes array
+  const dishes = useMemo(
+    () => [
+      "Spaghetti Bolognese",
+      "Chicken Tikka Masala",
+      "Grilled Salmon",
+      "Vegetable Stir-Fry",
+      "Beef Tacos",
+      "Margherita Pizza",
+      "Pad Thai",
+      "Cheeseburger",
+      "Lasagna",
+      "Caesar Salad",
+    ],
+    [] // No dependencies; this array doesn't change
+  );
 
   const [inputValue, setInputValue] = useState("");
   const [filterDishes, setFilterDishes] = useState(dishes);
@@ -30,7 +34,7 @@ export default function SearchFunctionality() {
       );
       setFilterDishes(searchValue);
     },
-    [dishes] // Dependency: Only re-create when 'dishes' changes
+    [dishes] // Dependency: Only re-create if 'dishes' changes
   );
 
   useEffect(() => {
