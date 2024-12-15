@@ -1,0 +1,36 @@
+.home-page-container {
+    width: 100%;
+    height: 100vh;
+    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-page-content {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; 
+    border: 2px solid #676562;
+    border-radius: 5px; 
+    padding: 30px;
+}
+
+.home-page-content p {
+    color: #393836; 
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.home-page-content a{
+   text-decoration: none;
+}
+
+.home-page-content p:hover {
+ text-decoration: underline;
+ color: rgb(16, 19, 17);
+}
+
