@@ -18,21 +18,26 @@ export default function SearchFunctionality() {
   const [inputValue, setInputValue] = useState("");
   const [filterDishes, setFilterDishes] = useState(dishes);
 
-  useEffect(() => {
-    setTimeout(() => {
-      handleSearch(inputValue);
-    }, 300);
-  }, [inputValue]);
-
+ 
 
   const handleSearch = (value) => {
     if (!inputValue) {
       setFilterDishes(dishes);
     }
-    const searchValue = dishes.filter((dish) => dish.toLowerCase().includes(value.toLowerCase()));
+    const searchValue = dishes.filter((dish) =>
+      dish.toLowerCase().includes(value.toLowerCase())
+    );
     setFilterDishes(searchValue);
   };
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   useEffect(() => {
+    const timeout = setTimeout(() => {
+      handleSearch(inputValue);
+    }, 300);
+
+    return () => clearTimeout(timeout); // Clear timeout on cleanup
+  }, [inputValue, handleSearch]);
 
   return (
     <div className="search-functionality-container">
