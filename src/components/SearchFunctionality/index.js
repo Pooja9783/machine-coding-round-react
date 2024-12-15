@@ -1,5 +1,5 @@
+import React, { useEffect, useState, useCallback } from "react";
 import "./styles.css";
-import React, { useEffect, useState } from "react";
 
 export default function SearchFunctionality() {
   const dishes = [
@@ -18,26 +18,28 @@ export default function SearchFunctionality() {
   const [inputValue, setInputValue] = useState("");
   const [filterDishes, setFilterDishes] = useState(dishes);
 
- 
+  // Use useCallback to memoize the handleSearch function
+  const handleSearch = useCallback(
+    (value) => {
+      if (!value) {
+        setFilterDishes(dishes);
+        return;
+      }
+      const searchValue = dishes.filter((dish) =>
+        dish.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilterDishes(searchValue);
+    },
+    [dishes] // Dependency: Only re-create when 'dishes' changes
+  );
 
-  const handleSearch = (value) => {
-    if (!inputValue) {
-      setFilterDishes(dishes);
-    }
-    const searchValue = dishes.filter((dish) =>
-      dish.toLowerCase().includes(value.toLowerCase())
-    );
-    setFilterDishes(searchValue);
-  };
-
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   useEffect(() => {
+  useEffect(() => {
     const timeout = setTimeout(() => {
-      handleSearch(inputValue);
+      handleSearch(inputValue); // Use stable handleSearch here
     }, 300);
 
     return () => clearTimeout(timeout); // Clear timeout on cleanup
-  }, [inputValue, handleSearch]);
+  }, [inputValue, handleSearch]); // Dependencies: inputValue and stable handleSearch
 
   return (
     <div className="search-functionality-container">
