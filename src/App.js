@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import SearchFunctionality from '../src/components/SearchFunctionality'
 import Home from '../src/Pages/Home'
+import Accordion from './components/Accordion';
+import Pagination from './components/Pagination';
 
 function App() {
   return (
@@ -9,6 +11,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/search-functionality' element={<SearchFunctionality/>} />
+        <Route path='/accordion' element={<Accordion/>} />
+        <Route path='/pagination' element={<Pagination/>} />
+
       </Routes>
       </BrowserRouter>
   

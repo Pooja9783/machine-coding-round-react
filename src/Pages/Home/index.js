@@ -12,7 +12,7 @@ export default function Home() {
         <Link to="/accordion">
           <p>Accordion & Nested Accordion</p>
         </Link>
-        <Link to="/accordion">
+        <Link to="/pagination">
           <p>Pagination</p>
         </Link>
       </div>
