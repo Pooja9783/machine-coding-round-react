@@ -52,6 +52,26 @@ const accordionContent = [
   },
 ];
 
+
+
+const accordionNestedContent = [
+  {
+    id: 1,
+    header: "Introduction to JavaScript",
+    content:
+      "JavaScript is a versatile programming language used for web development, enabling dynamic and interactive user interfaces.",
+  },
+  {
+    id: 2,
+    header: "Understanding HTML",
+    content:
+      "HTML (HyperText Markup Language) is the standard language for creating web pages, providing structure to content with elements like headings, paragraphs, and links.",
+  },
+  
+
+  
+];
+
 export default function Accordion() {
   const [isOpen, setIsOpen] = useState(null);
   const [isOpenNestedAccordion, setIsOpenNestedAccordion] = useState(null);
@@ -106,7 +126,7 @@ export default function Accordion() {
                 <>
                   {isOpenNestedAccordion === e.id && (
                     <div className="nested-content-div">
-                      {accordionContent.map((e) => {
+                      {accordionNestedContent.map((e) => {
                         return (
                           <>
                             <div className="accordion-contents">
