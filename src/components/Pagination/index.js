@@ -6,6 +6,26 @@ export default function Pagination() {
   const [paginationContent, setPaginationContent] = useState([]);
   const [itemsPerPage] = useState(10); // Items to display per page
 
+
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(paginationContent.length / itemsPerPage);
+
+
+     // Calculate the paginated data to display
+     const startIndex = (pageCount - 1) * itemsPerPage;
+     const endIndex = startIndex + itemsPerPage;
+     const currentPageData = paginationContent.slice(startIndex, endIndex);
+
+    // Calculate the range of pages to display (max 5 at a time)
+    const startPage = Math.max(1, pageCount - 2); // Ensure it doesn't go below 1
+    const endPage = Math.min(totalPages, startPage + 4); // Ensure it doesn't exceed total pages
+    const pageNumbers = Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => startPage + i
+    );
+  
+   
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -36,23 +56,6 @@ export default function Pagination() {
     setPageCount(page);
   };
 
-  // Calculate the total number of pages
-  const totalPages = Math.ceil(paginationContent.length / itemsPerPage);
-
-  // Calculate the range of pages to display (max 5 at a time)
-  const startPage = Math.max(1, pageCount - 2); // Ensure it doesn't go below 1
-  const endPage = Math.min(totalPages, startPage + 4); // Ensure it doesn't exceed total pages
-  const pageNumbers = Array.from(
-    { length: endPage - startPage + 1 },
-    (_, i) => startPage + i
-  );
-
-  // Calculate the paginated data to display
-  const startIndex = (pageCount - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentPageData = paginationContent.slice(startIndex, endIndex);
-
-console.log(paginationContent);
 
 
   return (
@@ -61,7 +64,9 @@ console.log(paginationContent);
         <h2>Pagination</h2>
         {currentPageData.map((item, index) => (
           <div key={index}>
-            <p>{item.id}  {" "}{item.title}</p>
+            <p>
+              {item.id} {item.title}
+            </p>
           </div>
         ))}
         <div className="pagination-controls">
