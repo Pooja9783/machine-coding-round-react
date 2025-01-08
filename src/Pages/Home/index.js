@@ -15,6 +15,9 @@ export default function Home() {
         <Link to="/pagination">
           <p>Pagination</p>
         </Link>
+        <Link to="/todo">
+          <p>Todo</p>
+        </Link>
       </div>
     </div>
   );
