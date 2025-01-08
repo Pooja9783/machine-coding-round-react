@@ -1,0 +1,56 @@
+.todo-container {
+    width: 100%;
+    height: 100vh;
+    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-content {
+        /* height: 100%; */
+}
+
+.todo-content h1{
+    text-align: center;
+}
+
+.todo-content input{
+    width: 30em;
+    height: 30px;
+    outline: none;
+}
+
+.todo-content button{
+    width: 100px;
+    height: 33px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.todo-ui{
+    margin-top: 10px;
+  
+}
+.todo-ui li{
+    list-style: none;
+    font-size: 20px;
+    
+}
+.todo-list{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid rgb(13, 12, 12);
+    border-radius: 3px;
+    padding: 2px;
+    margin: 5px 0px;
+}
+
+.todo-list button{
+    width: 30px;
+    height: 30px;
+    margin:0px 0px 0px 10px;
+}
+
+
